@@ -1,6 +1,10 @@
 # Git Initer
 
-This Shell Script command inits, adds, and commits the current directory given a first commit message
+This PowerShell Script command inits, adds, and commits the current directory given a first commit message
+
+
+
+Based from my [Git_initer]( https://github.com/Zeyu-Li/Git_initer)
 
 
 
@@ -9,38 +13,32 @@ This Shell Script command inits, adds, and commits the current directory given a
 To use, simple put: 
 
 ```powershell
-bash cmt.sh #some commit message
+cmt.ps1 # some commit message here
 
 OR
 
-bash cmt #some commit message
+cmt.ps1
+# for a 'first init' commit message
 
-OR
-
-./cmt.sh
 ```
 
 
 
 Code:
 
-```shell
-#!/bin/bash
+```powershell
 
-# gets args
-commit_message="$1"
+$commit_message=$args[0]
 
-# checks if null, if so, message will be: "first init"
-# else, message will be arg passed in
-if [[ ! $commit_message ]]
-then
-    message="first init"
-else
-    message=$commit_message
-fi
+if (! $commit_message){
+    $message="first init"
+} else{
+    $message=$commit_message
+}
 
-(git init && git add . && git commit -m \""$message"\")
-
+git init
+git add .
+git commit -m \""$message"\"
 
 ```
 
